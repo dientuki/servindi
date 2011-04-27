@@ -46,7 +46,7 @@
 <!-- header End -->
 
 <!-- header photo -->
-<div id="cabecera"><a href="<?php bloginfo('url'); ?>"><img src="http://www.servindi.org/img/logo.jpg" alt="<?php bloginfo('name'); ?>" border="0" width="194" height="120" /></a></div>
+<div id="cabecera"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></div>
 <!-- header photo end -->
 
 <!-- menu -->

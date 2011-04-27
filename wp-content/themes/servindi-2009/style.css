@@ -105,16 +105,24 @@ ul {
    margin-top: 8px;
 }
 #cabecera {
-   background-color: #009B00;
-/*   background-image: url(images/f2.jpg); */
-background-image: url(http://www.servindi.org/wp-content/themes/verde/img/f2.jpg);
-   background-repeat: repeat;
-   clear: both;
+
+	background: #B3CF3E url(images/logo.jpg) no-repeat;
+
    margin: 1px auto;
-   padding: 0px 0px 0px 0px;
-/*   height: 75px; */
-   height: 120px;
+   padding: 0px;
+   height: 119px;
    width: 870px;
+   padding-top: 6px;
+}
+
+#cabecera a{
+	outline: none;
+	width: 170px;
+	height: 119px;
+	margin: 0 auto;
+	display: block;
+	background: none;
+	text-indent: -999em;
 }
 /* Navigation */
 #nav {
