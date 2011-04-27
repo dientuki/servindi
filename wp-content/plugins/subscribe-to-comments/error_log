@@ -1,0 +1,3 @@
+[18-Dec-2010 04:41:39] PHP Fatal error:  Call to undefined function  add_action() in /home/servindo/public_html/wp-content/plugins/subscribe-to-comments/subscribe-to-comments.php on line 833
+[24-Jan-2011 10:05:13] PHP Fatal error:  Call to undefined function  add_action() in /home/servindo/public_html/wp-content/plugins/subscribe-to-comments/subscribe-to-comments.php on line 833
+[06-Feb-2011 08:24:59] PHP Fatal error:  Call to undefined function  add_action() in /home/servindo/public_html/wp-content/plugins/subscribe-to-comments/subscribe-to-comments.php on line 833

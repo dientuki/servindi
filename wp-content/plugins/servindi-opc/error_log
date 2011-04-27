@@ -1,0 +1,1 @@
+[19-Feb-2010 21:15:05] PHP Fatal error:  Call to undefined function  add_action() in /home/servindo/public_html/wp-content/plugins/servindi-opc/servindi.php on line 33

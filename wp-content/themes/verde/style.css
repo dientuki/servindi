@@ -1,0 +1,222 @@
+/*
+Theme Name: Verde
+Theme URI: http://www.servindi.org/
+Description: Original theme for Servindi
+Version: 1.5
+Author: Cesar Soplin [www.backd.com]
+Author URI: http://www.backd.com/
+
+"El software libre estimula el cerebro"
+*/
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #666666;
+}
+a:link {
+	color: #006600;
+}
+a:visited {
+	color: #717238;
+}
+a:hover {
+	color: #009966;
+}
+a:active {
+	color: #0066CC;
+}
+h1{
+	margin: 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 100%;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: normal;
+}
+h2{
+	margin: 10px 0px 10px 0px;
+	font-size: 130%;
+	font-weight: normal;
+}
+h2 a:link {
+	color: #000000;
+	text-decoration: none;
+}
+h2 a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+h2 a:hover {
+	color: #000000;
+	text-decoration: underline;
+}
+h2 a:active {
+	color: #000000;
+	text-decoration: none;
+}
+form{
+	padding: 10px 0px 10px 0px;
+	vertical-align: middle;
+}
+.rotulo {
+	display: none;
+}
+/*capas*/
+#contenedor {
+	margin: 0em auto;
+	min-width: 760px;
+	max-width: 1000px;
+	width: 98%;
+	background-image:url(img/c1.jpg);
+	background-repeat:repeat-y;
+	background-color:#FFFFFF;
+	/*border: 1px solid #cccccc;
+	
+	*/
+	}
+#front {
+	margin: 0px 0px 0px 5px;
+	/*border: 1px solid #cccccc;
+	width: 760px;*/
+	}
+/*cabecera*/
+#cabecera {
+	width: 100%;
+	}
+#arealogo {
+	height: 75px;
+	background-image:url(img/f2.jpg);
+	background-color: #016E01;
+}
+#arealema {
+	background-color: #009B00;
+	color: #FFFFFF;
+	vertical-align: middle;
+}
+/*columnas*/
+#columnas {
+	
+	}
+#columna1 {
+	float: left;
+	width: 70%;
+	}
+#buscar {
+	background-color:#F2F2F2;
+	text-align:center;
+	font-size: 70%;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: normal;
+	}
+#volver {
+	border-bottom: 1px dotted #cccccc;
+	margin: 0;
+	height: 20px;
+	width: 96%;
+	}
+.navegador {
+	text-align: center;
+	height: 30px;
+}
+#columna2 {
+	float: left;
+	/*width: 245px;*/
+	width: 29%;
+	padding-left: 2px;
+	border-left: 1px solid #cccccc;
+	}
+
+#contenido {
+	}
+	
+.fecha {
+	font-style:italic;
+	font-size: small;
+}
+.post {
+	clear: both;
+	margin: 10px 10px 20px 10px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	}
+.post img{
+	border: solid 1px #006666;
+}
+.texto {	
+	font-family: Arial;
+	line-height: 140%;
+	font-size: 75%;
+}
+
+.texto img{
+	margin: 4px;
+	border: 1px solid #006633;
+}
+.comentarios {
+	text-align: left;
+}
+#bcomentarios{
+	clear: both;
+	width: 98%;
+	line-height: 140%;
+	font-size: 75%;
+}
+.imagen {
+	}
+
+.margencolumnas {
+	margin-top: 0px;
+	margin-left: 3px;
+	margin-right: 3px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	line-height: 140%;
+	font-size: 70%;
+	}
+/*pie*/
+#pie {
+	clear: both;
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom:10px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 80%;
+	line-height: 120%;
+	color:#FFFFFF;
+	background-color:#006D00;
+	}
+#pie a:link {
+	color:#FFFFFF;
+}
+#pie a:active {
+	color:#FFFFFF;
+}
+#pie a:visited {
+	color:#FFFFFF;
+}
+
+.encategoria {
+	
+}
+.encategoria ul {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	}
+
+.encategoria li {
+	display: inline;
+	}
+
+.grupogoogle{
+	border: 2px solid green;
+	padding: 2px;
+	text-align: center;
+	color: #fff;
+	background-color: #009B00;
+}
+.grupogoogle a{
+	color: #fff;
+}

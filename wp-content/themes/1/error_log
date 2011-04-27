@@ -1,0 +1,1 @@
+[26-Jul-2010 20:10:33] PHP Fatal error:  Call to undefined function  get_header() in /home/servindo/public_html/wp-content/themes/servindi-2009/index.php on line 1

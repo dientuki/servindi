@@ -1,0 +1,355 @@
+/*  
+Theme Name: Servindi-2008
+Theme URI: http://www.fenixsoluciones.com
+Description: Tema para SERVINDI (basado en Colourful Bird de Ashish Sharma)
+Version: 0.3
+Author: Diego Lerma
+Author URI: http://diego.lermagomez.com/
+
+*/
+@import url(menu.css);
+body {
+   color: #666666;
+   text-align: center;
+   margin: 0 0 5px 0;
+   font-size: 12px;
+   font-family: Arial;
+   background-color: #bc8e2f;
+/*   background-image: url(images/bgk1.gif); */
+}
+/* links */
+a, a:visited {	
+	color: #5A93C9;
+	background: inherit;
+	text-decoration: none;	
+}
+a:hover {
+	color: #88ac0b;
+	background: inherit;
+	text-decoration: underline;	
+}
+
+/* headers */
+h1, h2, h3 {
+	color: #444;
+}
+h1 {
+	font-size: 230%;	
+	font-weight: normal;
+	letter-spacing: -1px;
+}
+h2 {
+	font-size: 180%;
+	color: #88ac0b;
+}
+h3 {
+	font-size: 150%;	
+	font-weight: normal;	
+}
+
+h1, h2, h3, p {
+	padding: 10px;		
+	margin: 0;
+}
+ul, ol {
+	margin: 5px 20px;
+	padding: 0 20px;
+}
+ul {
+	list-style: none;
+}
+
+#wraper {
+   position: relative;
+   background: #fff url(images/wrap-bg.jpg) repeat-y;
+   width: 900px;
+   margin: 0px auto 0 auto;
+   text-align: left;
+   padding-top: 5px;
+}
+#header {
+	position: relative;
+/*	background: #fff url(images/header-bg.jpg) repeat-x; */
+   background-color: #009B00;
+	width: 870px;	
+	height: 34px;	
+	padding: 0;	
+	margin: 0px auto;
+}
+#header h1 a {
+   /*   position: absolute; */
+   margin: 0px 10px 0px 0px;
+   padding: 0;
+   font-size: 14pt;
+   color: #111;
+   text-transform: none;
+   text-decoration: none;
+   left: 10px;
+   float: left;
+}
+#header h2 {
+   margin: 0px;
+   padding: 0;
+   font-size: 12pt;
+   text-transform: none;
+   color: #F0F8FF;
+}
+#header form{
+   float: right;
+}
+#header input{
+   margin-left: 3px;
+   margin-right: 3px;
+   margin-top: 8px;
+}
+#cabecera {
+   background-color: #009B00;
+/*   background-image: url(images/f2.jpg); */
+background-image: url(http://www.servindi.org/wp-content/themes/verde/img/f2.jpg);
+   background-repeat: repeat;
+   clear: both;
+   margin: 1px auto;
+   padding: 0px 0px 0px 0px;
+/*   height: 75px; */
+   height: 120px;
+   width: 870px;
+}
+/* Navigation */
+#nav {
+	clear: both;	
+	margin: 0; padding: 0;		
+	height: 23px;
+}
+#nav ul {
+	float: left;
+	list-style: none;
+	background: url(images/nav.jpg) repeat-x;	
+	width: 870px;		
+	height: 23px;
+	text-transform: uppercase;
+	margin: 0 0 0 15px;
+	padding: 0;	
+	display: inline;
+}
+#nav ul li {
+	display: inline;
+	margin: 0; padding: 0;
+}
+#nav ul li a {
+	display: block;
+	float: left;
+	width: auto;
+	margin: 0;
+	padding: 0 4px;
+	border-right: 1px solid #899D00;
+	border-left: 1px solid #A7D101;
+	font: bold 14px/23px "Century Gothic", "Trebuchet MS", Helvetica, Arial, Geneva, sans-serif;
+	text-transform: uppercase;
+	text-decoration: none;	
+	letter-spacing: 1px;
+	color: #fff;
+}
+#nav ul li a:hover, #nav ul li a:active {
+	background: url(images/nav-hover.jpg) repeat-x;	
+}
+#nav ul li#current a {	
+	background: url(images/nav-current.jpg) repeat-x;	
+}
+#content-wrap {
+	position: relative;
+	background: #fff url(images/content-bg.jpg) repeat-x;
+	clear: both;
+	float: left;	
+	width: 870px;	
+	padding: 0; 			
+	margin-left: 15px;	
+	display: inline;
+	border-top: 5px solid #fff;
+	border-bottom: 1px solid #e5e5e5;
+	border-left: 1px solid #fff;
+	border-right: 1px solid #fff;
+}
+#main {
+	float: left;
+	width: 550px;
+	padding: 15px 0 0 0; margin: 0 0 0 10px;
+	display: inline;
+}
+#main IMG{
+   margin: 4px 4px 4px 4px;
+   padding: 4px 4px 4px 4px;
+}
+#main .espar, #comentarios .espar{
+   background-color: #F7F7F7;
+}
+#main .esimpar{
+   background-color: transparent;
+}
+#main h2 {
+	margin-top: 10px;
+	padding-bottom: 3px;
+   font-style: normal;
+   font-size: 2em;
+	color: #895F30; 
+	letter-spacing: -1px;	
+	text-transform: none;
+   border-bottom: 1pt solid Black;
+}
+#main h2 a {
+   color: #895F30;
+   text-decoration: none;
+}
+.sidebar{
+	float: right;
+	width: 290px;
+	padding: 25px 3px 0 6px;
+	margin: 0;
+	border-left: 2px solid #E8E8E8;
+}
+.post{
+	padding:10px 0 10px 0;
+	}
+.post h2{
+	font-size:18px;
+	}
+.entry{
+	line-height:18px;
+   text-align: justify;
+}
+p.postmetadata{
+	border-top:1px solid #ccc;
+	margin:10px 0 0 0;
+	}
+.navigation{
+	padding:10px 0 0 0;
+	font-size:14px;
+	font-weight:bold;
+	line-height:18px;
+	}
+/* Sidebar */	
+#sidebar {
+	float: right;
+	width: 280px;
+	padding: 25px 0 0 0; margin: 0;		
+}
+.sidebar h3 {
+	margin-top: 10px;
+	padding: 5px 5px; 
+   font-size: 1.5em;
+   font-style: normal;
+	color: #899B0D;
+}
+.sidemenu {
+	text-align: left;
+	margin: 7px 10px 8px 0px; padding: 0;
+	text-decoration: none;		
+	border-top: 1px solid #EBEBEB;
+}
+.sidemenu li {
+	list-style: none;
+	border-bottom: 1px solid #EBEBEB;
+	padding: 5px 0 5px 5px;
+	margin: 0 2px;		
+}
+* html body #sidebar ul.sidemenu li {
+	height: 1%;
+}
+.sidemenu li a {
+	text-decoration: none;	
+	background-image: none;	
+	color: #895F30; 		
+}
+.sidemenu li a:hover {	
+	color: #1773BC;	
+}
+.sidemenu ul { margin: 0 0 0 5px; padding: 0; }
+.sidemenu ul li { border: none; }
+#footer-wrap {
+	clear: both;
+	width: 900px;
+	font-size: 95%;	
+	text-align: left;
+	border-bottom: 15px solid #fff;
+	border-top: 1px solid #fff;
+}
+#footer-wrap a:hover {
+	color: #000;	
+}
+#footer-bottom {
+	clear: both;
+	color: #666;	
+	margin: 0 auto; 
+	width: 870px;
+	padding: 5px 0 0 0;
+	text-align: center;	
+}
+#footer-bottom  a {
+	color: #976834;
+}
+/* postmeta */
+.postmeta {	
+	padding: 5px; margin: 20px 10px 15px 10px;	
+	font-size: 95%;	
+	color: #99997D;
+	border: 1px solid #EAE7DB;
+	background: #FAFAE7;
+}
+.postmeta .date{ margin: 0 10px 0 5px;	}
+.postmeta a.comments { margin: 0 10px 0 5px;	}
+.postmeta a.readmore { margin: 0 10px 0 5px;	}
+
+.post-info { font-size: .95em;	padding-top: 0; margin-left: 5px;	}
+
+/* alignment classes */
+.float-left  { float: left; }
+.float-right { float: right; }
+.align-left  { text-align: left; }
+.align-right { text-align: right; }
+
+/* display and additional classes */
+.clear { clear: both; }
+table#wp-calendar{
+	width:100%;
+}
+
+/* Estilos especiales para el formulario de respuestas */
+#nueva-respuesta{
+   background-color: #FCFCFC;
+   border: 1px inset Black;
+}
+#xhtml-tags{
+   /*   float: right; */
+   width: 440px;
+   border: 1px solid #2F4F4F;
+   background-color: #EBF1F1;
+   margin: 5px 5px 5px 10px;
+   padding: 10px 10px 10px 10px;
+   color: #51898A;
+}
+.comentario-advertencia{
+   width: 460px;
+   border: 1px solid Black;
+   background-color: #FAE5DE;
+   margin: 5px 5px 5px 10px;
+   padding: 6px 6px 6px 6px;
+}
+#comentarios{
+	border: 1px solid #F3F3F3;
+	margin: 5px 5px 5px 5px;
+}
+#comentarios H2{
+	text-align: right;
+	font-size: 13pt;
+}
+#comentario A{
+	font-weight: bold;
+}
+#get_recent_comments_wrap{
+list-style: none;
+}
+#get_recent_comments_wrap li{
+padding-top: 3pt;
+padding-bottom: 3pt;
+margin-top: 3pt;
+margin-bottom: 3pt;
+}

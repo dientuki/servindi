@@ -1,0 +1,1 @@
+[24-Feb-2010 15:19:05] PHP Fatal error:  Call to undefined function  load_plugin_textdomain() in /home/servindo/public_html/wp-content/plugins/404-notifier/404-notifier.php on line 27

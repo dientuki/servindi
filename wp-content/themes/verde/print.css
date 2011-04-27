@@ -1,0 +1,148 @@
+/*
+Theme Name: Verde
+Theme URI: http://www.servindi.org/
+Description: Original theme for Servindi
+Version: 1.5
+Author: Cesar Soplin [www.backd.com]
+Author URI: http://www.backd.com/
+
+"El software libre estimula el cerebro"
+*/
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #ffffff;
+}
+
+h1{
+	margin: 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 100%;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: normal;
+	letter-spacing: 2px;
+}
+h2{
+	margin: 10px 0px 10px 0px;
+	font-size: 130%;
+	font-weight: normal;
+}
+#comentarios {
+	display: none;
+}
+/*capas*/
+#contenedor {
+	width: 100%;
+	background-color:#FFFFFF;
+	}
+#front {
+	margin: 0px 0px 0px 5px;
+	}
+.rotulo {
+	display: block;
+}
+/*cabecera*/
+#cabecera {
+	width: 100%;
+	border-bottom: 1px solid #000000;
+	}
+#arealogo {
+	
+}
+#arealema {
+	background-color: #009B00;
+	color: #FFFFFF;
+	vertical-align: middle;
+}
+/*columnas*/
+#columnas {
+	
+	}
+#columna1 {
+	width: 100%;
+	}
+#buscar {
+	display: none;
+	}
+.navegador {
+	text-align: center;
+	height: 30px;
+}
+#columna2 {
+	display: none;
+	}
+
+#contenido {
+	}
+
+#volver {
+	display: none;
+}
+
+.fecha {
+	font-style:italic;
+	font-size: small;
+}
+.post {
+	margin: 10px 10px 20px 10px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	}
+.texto {	
+	font-family: Georgia, "Times New Roman", Times, serif;
+	line-height: 140%;
+	font-size: 75%;
+}
+.comentarios {
+	text-align: left;
+}
+.imagen {
+	
+	}
+
+.margencolumnas {
+	margin-top: 10px;
+	margin-left: 3px;
+	margin-right: 3px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	line-height: 140%;
+	font-size: 70%;
+	}
+/*pie*/
+#pie {
+	clear: both;
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom:10px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 80%;
+	line-height: 120%;
+	color:#FFFFFF;
+	background-color:#006D00;
+	}
+#pie a:link {
+	color:#FFFFFF;
+}
+#pie a:active {
+	color:#FFFFFF;
+}
+#pie a:visited {
+	color:#FFFFFF;
+}
+
+.encategoria {
+	
+}
+.encategoria ul {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	}
+
+.encategoria li {
+	display: inline;
+	}

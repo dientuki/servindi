@@ -1,0 +1,4 @@
+[13-Jul-2010 14:06:25] PHP Fatal error:  Call to undefined function  get_option() in /home/servindo/public_html/wp-content/plugins/role-manager/role-manager.php on line 52
+[20-Jul-2010 19:33:05] PHP Fatal error:  Call to undefined function  get_option() in /home/servindo/public_html/wp-content/plugins/role-manager/role-manager.php on line 52
+[22-Jul-2010 18:43:16] PHP Fatal error:  Call to undefined function  get_option() in /home/servindo/public_html/wp-content/plugins/role-manager/role-manager.php on line 52
+[25-Jul-2010 05:25:38] PHP Fatal error:  Call to undefined function  get_option() in /home/servindo/public_html/wp-content/plugins/role-manager/role-manager.php on line 52
