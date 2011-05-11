@@ -1,5 +1,4 @@
 <?php get_header(); ?>
-<!-- <?php //echo ('paged'.$paged);?> -->
 
   <div id="content-wrap">
     <!-- content -->
@@ -28,23 +27,13 @@
 	  $bandera = ($bandera)?false:true;
 	  endwhile;
 ?>
-	<div id="mas20">
-	<h4>M&aacute;s noticias</h4>
-	
-	<?php if ($paged == 0) : $offset = 10; else: $offset = $paged*10; endif ?>
-	<!--  <?php echo 'paged: ' . $paged. ' offset:' .$offset?> -->
-<?php
-		$my_query = new WP_Query('posts_per_page=20&offset='.$offset); 
-		while ($my_query->have_posts()) : $my_query->the_post(); 
-	?>
-	<h4><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h4>
-	<?php endwhile; ?></div>
 	
       <div class="navigation">
 <?php // posts_nav_link() ?>
 <div class="nav-previous"><?php previous_posts_link('Anterior') ?></div>
 <div class="nav-next"><?php next_posts_link('Siguiente') ?></div>
       </div>
+
       <?php else : ?>
       <div class="post">
         <h2>No hay datos</h2>

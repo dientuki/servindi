@@ -34,12 +34,7 @@
 
 <!-- header -->
 <div id="header">
-	<div id="buscador">
-		<form method="get" id="searchform" action="<?php bloginfo('home'); ?>">
-			<input type="text" value="<?php echo wp_specialchars($s, 1); ?>" name="s" id="s" size="12" style="border:1px solid #9ed652" />
-			<input type="submit" id="searchsubmit" value="Buscar" style="border:1px solid #9ed652" />
-		</form>
-	</div>
+	<?php get_search_form()?>
 	<h1 id="logo-text"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('description'); ?></a></h1>
 	<h2 id="slogan"></h2>
 </div>
