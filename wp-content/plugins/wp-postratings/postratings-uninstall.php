@@ -2,7 +2,7 @@
 /*
 +----------------------------------------------------------------+
 |																							|
-|	WordPress 2.8 Plugin: WP-PostRatings 1.50								|
+|	WordPress 2.8 Plugin: WP-PostRatings 1.61								|
 |	Copyright (c) 2009 Lester "GaMerZ" Chan									|
 |																							|
 |	File Written By:																	|
@@ -28,7 +28,7 @@ $base_name = plugin_basename('wp-postratings/postratings-manager.php');
 $base_page = 'admin.php?page='.$base_name;
 $mode = trim($_GET['mode']);
 $ratings_tables = array($wpdb->ratings);
-$ratings_settings = array('postratings_image', 'postratings_max', 'postratings_template_vote', 'postratings_template_text', 'postratings_template_none', 'postratings_logging_method', 'postratings_allowtorate', 'postratings_ratingstext', 'postratings_template_highestrated', 'postratings_ajax_style', 'widget_ratings_highest_rated', 'widget_ratings_most_rated', 'postratings_customrating', 'postratings_ratingsvalue', 'postratings_template_permission', 'postratings_template_mostrated', 'widget_ratings');
+$ratings_settings = array('postratings_image', 'postratings_max', 'postratings_template_vote', 'postratings_template_text', 'postratings_template_none', 'postratings_logging_method', 'postratings_allowtorate', 'postratings_ratingstext', 'postratings_template_highestrated', 'postratings_ajax_style', 'widget_ratings_highest_rated', 'widget_ratings_most_rated', 'postratings_customrating', 'postratings_ratingsvalue', 'postratings_template_permission', 'postratings_template_mostrated', 'widget_ratings', 'widget_ratings-widget');
 $ratings_postmetas = array('ratings_users', 'ratings_score', 'ratings_average');
 
 
@@ -57,7 +57,7 @@ if(!empty($_POST['do'])) {
 						echo '</font><br />';
 					} else {
 						echo '<font color="red">';
-						printf(__('Error deleting Setting Key \'%s\' or Setting Key \'%s\' does not exist.', 'wp-postratings'), "<strong><em>{$setting}</em></strong>");
+						printf(__('Error deleting Setting Key \'%s\' or Setting Key \'%s\' does not exist.', 'wp-postratings'), "<strong><em>{$setting}</em></strong>", "<strong><em>{$setting}</em></strong>");
 						echo '</font><br />';
 					}
 				}
@@ -71,7 +71,7 @@ if(!empty($_POST['do'])) {
 						echo '</font><br />';
 					} else {
 						echo '<font color="red">';
-						printf(__('Error deleting Post Meta Key \'%s\' or Post Meta Key \'%s\' does not exist.', 'wp-postratings'), "<strong><em>{$postmeta}</em></strong>");
+						printf(__('Error deleting Post Meta Key \'%s\' or Post Meta Key \'%s\' does not exist.', 'wp-postratings'), "<strong><em>{$postmeta}</em></strong>", "<strong><em>{$postmeta}</em></strong>");
 						echo '</font><br />';
 					}
 				}
@@ -102,7 +102,7 @@ switch($mode) {
 	default:
 ?>
 <!-- Uninstall WP-PostRatings -->
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo plugin_basename(__FILE__); ?>">
+<form method="post" action="<?php echo admin_url('admin.php?page='.plugin_basename(__FILE__)); ?>">
 <div class="wrap">
 	<div id="icon-wp-postratings" class="icon32"><br /></div>
 	<h2><?php _e('Uninstall WP-PostRatings', 'wp-postratings'); ?></h2>
@@ -159,7 +159,7 @@ switch($mode) {
 	<p>&nbsp;</p>
 	<p style="text-align: center;">
 		<input type="checkbox" name="uninstall_rating_yes" value="yes" />&nbsp;<?php _e('Yes', 'wp-postratings'); ?><br /><br />
-		<input type="submit" name="do" value="<?php _e('UNINSTALL WP-PostRatings', 'wp-postratings'); ?>" class="button" onclick="return confirm('<?php _e('You Are About To Uninstall WP-PostRatings From WordPress.\nThis Action Is Not Reversible.\n\n Choose [Cancel] To Stop, [OK] To Uninstall.', 'wp-postratings'); ?>')" />
+		<input type="submit" name="do" value="<?php _e('UNINSTALL WP-PostRatings', 'wp-postratings'); ?>" class="button-primary" onclick="return confirm('<?php _e('You Are About To Uninstall WP-PostRatings From WordPress.\nThis Action Is Not Reversible.\n\n Choose [Cancel] To Stop, [OK] To Uninstall.', 'wp-postratings'); ?>')" />
 	</p>
 </div>
 </form>

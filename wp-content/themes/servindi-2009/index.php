@@ -18,9 +18,7 @@
 <?php if(function_exists('wp_email')) { email_link(); echo "&nbsp;|&nbsp;"; } ?>
 <?php if(function_exists('wp_print')) { print_link(); echo "&nbsp;|&nbsp;"; } ?>
 <?php edit_post_link('Editar','','&nbsp;|&nbsp;'); ?><?php comments_popup_link('Sin comentarios &raquo;', 'Alguien opino &raquo;', '% comentarios &raquo;'); ?>
-<?php if(function_exists('the_ratings')) { the_ratings(); 
-//echo "&nbsp;|&nbsp;"; 
-} ?>
+<?php if(function_exists('the_ratings')) { the_ratings(); } ?>
 </p>
         </div>
       </div>

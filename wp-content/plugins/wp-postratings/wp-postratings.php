@@ -3,7 +3,7 @@
 Plugin Name: WP-PostRatings
 Plugin URI: http://lesterchan.net/portfolio/programming/php/
 Description: Adds an AJAX rating system for your WordPress blog's post/page.
-Version: 1.50
+Version: 1.61
 Author: Lester 'GaMerZ' Chan
 Author URI: http://lesterchan.net
 */
@@ -76,39 +76,41 @@ function the_ratings($start_tag = 'div', $custom_id = 0, $display = true) {
 	global $id;
 	// Allow Custom ID
 	if(intval($custom_id) > 0) {
-		$id = $custom_id;
+		$ratings_id = $custom_id;
+	} else {
+		$ratings_id = $id;
 	}
 	// Loading Style
 	$postratings_ajax_style = get_option('postratings_ajax_style');
 	if(intval($postratings_ajax_style['loading']) == 1) {
-		$loading = "\n<$start_tag id=\"post-ratings-$id-loading\"  class=\"post-ratings-loading\"><img src=\"".plugins_url('wp-postratings/images/loading.gif')."\" width=\"16\" height=\"16\" alt=\"".__('Loading', 'wp-postratings')." ...\" title=\"".__('Loading', 'wp-postratings')." ...\" class=\"post-ratings-image\" />&nbsp;".__('Loading', 'wp-postratings')." ...</".$start_tag.">\n";
+		$loading = "\n<$start_tag id=\"post-ratings-$ratings_id-loading\"  class=\"post-ratings-loading\"><img src=\"".plugins_url('wp-postratings/images/loading.gif')."\" width=\"16\" height=\"16\" alt=\"".__('Loading', 'wp-postratings')." ...\" title=\"".__('Loading', 'wp-postratings')." ...\" class=\"post-ratings-image\" />&nbsp;".__('Loading', 'wp-postratings')." ...</".$start_tag.">\n";
 	} else {
 		$loading = '';
 	}
 	// Check To See Whether User Has Voted
-	$user_voted = check_rated($id);
+	$user_voted = check_rated($ratings_id);
 	// If User Voted Or Is Not Allowed To Rate
 	if($user_voted) {
 		if(!$display) {
-			return "<$start_tag id=\"post-ratings-$id\" class=\"post-ratings\">".the_ratings_results($id).'</'.$start_tag.'>'.$loading;
+			return "<$start_tag id=\"post-ratings-$ratings_id\" class=\"post-ratings\">".the_ratings_results($ratings_id).'</'.$start_tag.'>'.$loading;
 		} else {
-			echo "<$start_tag id=\"post-ratings-$id\" class=\"post-ratings\">".the_ratings_results($id).'</'.$start_tag.'>'.$loading;
+			echo "<$start_tag id=\"post-ratings-$ratings_id\" class=\"post-ratings\">".the_ratings_results($ratings_id).'</'.$start_tag.'>'.$loading;
 			return;
 		}
 	// If User Is Not Allowed To Rate
 	} else if(!check_allowtorate()) {
 		if(!$display) {
-			return "<$start_tag id=\"post-ratings-$id\" class=\"post-ratings\">".the_ratings_results($id, 0, 0, 0, 1).'</'.$start_tag.'>'.$loading;
+			return "<$start_tag id=\"post-ratings-$ratings_id\" class=\"post-ratings\">".the_ratings_results($ratings_id, 0, 0, 0, 1).'</'.$start_tag.'>'.$loading;
 		} else {
-			echo "<$start_tag id=\"post-ratings-$id\" class=\"post-ratings\">".the_ratings_results($id, 0, 0, 0, 1).'</'.$start_tag.'>'.$loading;
+			echo "<$start_tag id=\"post-ratings-$ratings_id\" class=\"post-ratings\">".the_ratings_results($ratings_id, 0, 0, 0, 1).'</'.$start_tag.'>'.$loading;
 			return;
 		}
 	// If User Has Not Voted
 	} else {
 		if(!$display) {
-			return "<$start_tag id=\"post-ratings-$id\" class=\"post-ratings\">".the_ratings_vote($id).'</'.$start_tag.'>'.$loading;
+			return "<$start_tag id=\"post-ratings-$ratings_id\" class=\"post-ratings\">".the_ratings_vote($ratings_id).'</'.$start_tag.'>'.$loading;
 		} else {
-			echo "<$start_tag id=\"post-ratings-$id\" class=\"post-ratings\">".the_ratings_vote($id).'</'.$start_tag.'>'.$loading;
+			echo "<$start_tag id=\"post-ratings-$ratings_id\" class=\"post-ratings\">".the_ratings_vote($ratings_id).'</'.$start_tag.'>'.$loading;
 			return;
 		}
 	}
@@ -309,7 +311,7 @@ function check_rated_ip($post_id) {
 function check_rated_username($post_id) {
 	global $wpdb, $user_ID;
 	if(!is_user_logged_in()) {
-		return 1;
+		return 0;
 	}
 	$rating_userid = intval($user_ID);
 	// Check User ID From IP Logging Database
@@ -323,15 +325,17 @@ function check_rated_username($post_id) {
 add_action('loop_start', 'get_comment_authors_ratings');
 function get_comment_authors_ratings() {
 	global $wpdb, $post, $comment_authors_ratings;
-	$comment_authors_ratings = array();
-    if($post->ID) {
-		$comment_authors_ratings_results = $wpdb->get_results("SELECT rating_username, rating_rating, rating_ip FROM $wpdb->ratings WHERE rating_postid = ".$post->ID);
-	}
-	if($comment_authors_ratings_results) {
-		foreach($comment_authors_ratings_results as $comment_authors_ratings_result) {
-			$comment_author = stripslashes($comment_authors_ratings_result->rating_username);
-			$comment_authors_ratings[$comment_author] = $comment_authors_ratings_result->rating_rating;
-			$comment_authors_ratings[$comment_authors_ratings_result->rating_ip] = $comment_authors_ratings_result->rating_rating;
+	if(!is_feed() && !is_admin()) {
+		$comment_authors_ratings = array();
+		if($post->ID) {
+			$comment_authors_ratings_results = $wpdb->get_results("SELECT rating_username, rating_rating, rating_ip FROM $wpdb->ratings WHERE rating_postid = ".$post->ID);
+		}
+		if($comment_authors_ratings_results) {
+			foreach($comment_authors_ratings_results as $comment_authors_ratings_result) {
+				$comment_author = stripslashes($comment_authors_ratings_result->rating_username);
+				$comment_authors_ratings[$comment_author] = $comment_authors_ratings_result->rating_rating;
+				$comment_authors_ratings[$comment_authors_ratings_result->rating_ip] = $comment_authors_ratings_result->rating_rating;
+			}
 		}
 	}
 }
@@ -424,7 +428,7 @@ if(!function_exists('get_ipaddress')) {
 			$ip_address = explode(',', $ip_address);
 			$ip_address = $ip_address[0];
 		}
-		return $ip_address;
+		return esc_attr($ip_address);
 	}
 }
 
@@ -442,7 +446,7 @@ function ratings_images_folder($folder_name) {
 	if(is_dir($postratings_path)) {
 		if($handle = @opendir($postratings_path)) {
 			while (false !== ($filename = readdir($handle))) {  
-				if ($filename != '.' && $filename != '..' && substr($filename, -8) != '-rtl.'.RATINGS_IMG_EXT) {
+				if ($filename != '.' && $filename != '..' && substr($filename, -8) != '-rtl.'.RATINGS_IMG_EXT && strpos($filename, '.') !== 0) {
 					if(in_array($filename, $normal_images)) {
 						$count++;
 					} elseif(intval(substr($filename,7, -7)) > $rating['max']) {
@@ -729,11 +733,16 @@ function ratings_sorting($local_wp_query) {
 
 
 ### Function: Plug Into WP-Stats
-if(strpos(get_option('stats_url'), $_SERVER['REQUEST_URI']) || strpos($_SERVER['REQUEST_URI'], 'stats-options.php') || strpos($_SERVER['REQUEST_URI'], 'wp-stats/wp-stats.php')) {
-	add_filter('wp_stats_page_admin_plugins', 'postratings_page_admin_general_stats');
-	add_filter('wp_stats_page_admin_most', 'postratings_page_admin_most_stats');
-	add_filter('wp_stats_page_plugins', 'postratings_page_general_stats');
-	add_filter('wp_stats_page_most', 'postratings_page_most_stats');
+add_action('wp','postratings_wp_stats');
+function postratings_wp_stats() {
+	if(function_exists('stats_page')) {
+		if(strpos(get_option('stats_url'), $_SERVER['REQUEST_URI']) || strpos($_SERVER['REQUEST_URI'], 'stats-options.php') || strpos($_SERVER['REQUEST_URI'], 'wp-stats/wp-stats.php')) {
+			add_filter('wp_stats_page_admin_plugins', 'postratings_page_admin_general_stats');
+			add_filter('wp_stats_page_admin_most', 'postratings_page_admin_most_stats');
+			add_filter('wp_stats_page_plugins', 'postratings_page_general_stats');
+			add_filter('wp_stats_page_most', 'postratings_page_most_stats');
+		}
+	}
 }
 
 
@@ -1058,7 +1067,7 @@ function expand_ratings_template($template, $post_id, $post_ratings_data = null,
 	}
 	// Return value
 	$post = $temp_post;
-	return apply_filters('expand_ratings_template', $value);
+	return apply_filters('expand_ratings_template', htmlspecialchars_decode($value));
 }
 
 
@@ -1067,7 +1076,7 @@ function expand_ratings_template($template, $post_id, $post_ratings_data = null,
 	// Constructor
 	function WP_Widget_PostRatings() {
 		$widget_ops = array('description' => __('WP-PostRatings ratings statistics', 'wp-postratings'));
-		$this->WP_Widget('ratings', __('Ratings', 'wp-postratings'), $widget_ops);
+		$this->WP_Widget('ratings-widget', __('Ratings', 'wp-postratings'), $widget_ops);
 	}
 
 	// Display Widget
