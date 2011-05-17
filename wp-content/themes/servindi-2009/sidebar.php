@@ -15,9 +15,9 @@
 	</div>
 	<?php if ( (get_option("servindi_audio") <> '') && (function_exists("insert_audio_player")) ): ?>
 		<h3>Edici&oacute;n internacional</h3>
-  		<?php insert_audio_player('[audio:' . get_option("servindi_audio") . 'titles=Edicion internacional]'); ?>
+  		<?php insert_audio_player('[audio:' . get_option("servindi_audio") . '|titles=Edicion internacional]'); ?>
   		<h3>Edici&oacute;n Per&uacute;</h3>
-  		<?php insert_audio_player('[audio:' . get_option("servindi_nacional") . 'titles=Edicion Per&uacute;]'); ?>
+  		<?php insert_audio_player('[audio:' . get_option("servindi_nacional") . '|titles=Edicion Perú]'); ?>
 	<?php endif;  ?>
 	
 
