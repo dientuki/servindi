@@ -1,6 +1,0 @@
-[01-Mar-2010 06:52:04] PHP Fatal error:  Call to undefined function  __() in /home/servindo/public_html/wp-content/plugins/audio-player/php/options-panel.php on line 10
-[15-Jan-2011 11:44:27] PHP Fatal error:  Call to undefined function  __() in /home/servindo/public_html/wp-content/plugins/audio-player/php/options-panel.php on line 10
-[17-Jan-2011 09:50:09] PHP Fatal error:  Call to undefined function  __() in /home/servindo/public_html/wp-content/plugins/audio-player/php/options-panel.php on line 10
-[19-Jan-2011 08:38:11] PHP Fatal error:  Call to undefined function  __() in /home/servindo/public_html/wp-content/plugins/audio-player/php/options-panel.php on line 10
-[21-Jan-2011 08:09:26] PHP Fatal error:  Call to undefined function  __() in /home/servindo/public_html/wp-content/plugins/audio-player/php/options-panel.php on line 10
-[25-Jan-2011 06:55:09] PHP Fatal error:  Call to undefined function  __() in /home/servindo/public_html/wp-content/plugins/audio-player/php/options-panel.php on line 10
