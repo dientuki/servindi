@@ -13,33 +13,14 @@
 		</form>
 		</div>
 	</div>
-	<?php if ( get_option("servindi_audio") <> "" ){ ?>
-	<div>
-		<h2 class="widgettitle"><a href="http://www.servindi.org/category/multimedia/audios/resumen-noticias-semanal" style="color: #88AC0B;">Resumen semanal</a></h2>
-		<div class="textwidget" align="center">
-<h3>Edici&oacute;n internacional</h3>
-			<object type="application/x-shockwave-flash" data="http://www.servindi.org/wp-content/plugins/audio-player/player.swf" width="220" height="24" id="audioplayer1">
-			<param name="movie" value="http://www.servindi.org/wp-content/plugins/audio-player/player.swf" />
-			<param name="FlashVars" value="playerID=1&amp;bg=0xf8f8f8&amp;leftbg=0xeeeeee&amp;lefticon=0x666666&amp;rightbg=0xcccccc&amp;rightbghover=0x999999&amp;righticon=0x666666&amp;righticonhover=0xffffff&amp;text=0x666666&amp;slider=0x666666&amp;track=0xFFFFFF&amp;border=0x666666&amp;loader=0x9FFFB8&amp;soundFile=<?php echo urlencode(get_option("servindi_audio")); ?>" />
-			<param name="quality" value="high" />
-			<param name="menu" value="false" />
-			<param name="bgcolor" value="#FFFFFF" />
-			</object><br />
-			<a href="<?php echo get_option("servindi_audio"); ?>" target="_blank">Descargar</a>
-		</div>
-		<div class="textwidget" align="center">
-<h3>Edici&oacute;n Per&uacute;</h3>
-			<object type="application/x-shockwave-flash" data="http://www.servindi.org/wp-content/plugins/audio-player/player.swf" width="220" height="24" id="audioplayer1">
-			<param name="movie" value="http://www.servindi.org/wp-content/plugins/audio-player/player.swf" />
-			<param name="FlashVars" value="playerID=1&amp;bg=0xf8f8f8&amp;leftbg=0xeeeeee&amp;lefticon=0x666666&amp;rightbg=0xcccccc&amp;rightbghover=0x999999&amp;righticon=0x666666&amp;righticonhover=0xffffff&amp;text=0x666666&amp;slider=0x666666&amp;track=0xFFFFFF&amp;border=0x666666&amp;loader=0x9FFFB8&amp;soundFile=<?php echo urlencode(get_option("servindi_nacional")); ?>" />
-			<param name="quality" value="high" />
-			<param name="menu" value="false" />
-			<param name="bgcolor" value="#FFFFFF" />
-			</object><br />
-			<a href="<?php echo get_option("servindi_nacional"); ?>" target="_blank">Descargar</a>
-		</div>
-	</div>
-	<?php  } ?>
+	<?php if ( (get_option("servindi_audio") <> '') && (function_exists("insert_audio_player")) ): ?>
+		<h3>Edici&oacute;n internacional</h3>
+  		<?php insert_audio_player('[audio:' . get_option("servindi_audio") . 'titles=Edicion internacional]'); ?>
+  		<h3>Edici&oacute;n Per&uacute;</h3>
+  		<?php insert_audio_player('[audio:' . get_option("servindi_nacional") . 'titles=Edicion Per&uacute;]'); ?>
+	<?php endif;  ?>
+	
+
 	<div>
 		<h2 class="widgettitle"><a href="http://www.servindi.org/category/actualidad/opinion" style="color: #88AC0B;">Opini&oacute;n</a></h2>
 		<div class="textwidget" id="anteriores_sd">
