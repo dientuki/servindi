@@ -2,7 +2,7 @@
 /*
 +----------------------------------------------------------------+
 |																							|
-|	WordPress 2.7 Plugin: WP-PostViews 1.50	 								|
+|	WordPress 2.8 Plugin: WP-PostViews 1.60	 								|
 |	Copyright (c) 2009 Lester "GaMerZ" Chan									|
 |																							|
 |	File Written By:																	|
@@ -133,7 +133,7 @@ switch($mode) {
 	/* ]]> */
 </script>
 <?php if(!empty($text)) { echo '<!-- Last Action --><div id="message" class="updated fade"><p>'.$text.'</p></div>'; } ?>
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo plugin_basename(__FILE__); ?>">
+<form method="post" action="<?php echo admin_url('admin.php?page='.plugin_basename(__FILE__)); ?>">
 <div class="wrap">
 	<?php screen_icon(); ?>
 	<h2><?php _e('Post Views Options', 'wp-postviews'); ?></h2>
@@ -249,14 +249,14 @@ switch($mode) {
 		</tr>
 	</table>
 	<p class="submit">
-		<input type="submit" name="Submit" class="button" value="<?php _e('Save Changes', 'wp-postviews'); ?>" />
+		<input type="submit" name="Submit" class="button-primary" value="<?php _e('Save Changes', 'wp-postviews'); ?>" />
 	</p>
 </div>
 </form> 
 <p>&nbsp;</p>
 
 <!-- Uninstall WP-PostViews -->
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo plugin_basename(__FILE__); ?>">
+<form method="post" action="<?php echo admin_url('admin.php?page='.plugin_basename(__FILE__)); ?>">
 <div class="wrap"> 
 	<h3><?php _e('Uninstall WP-PostViews', 'wp-postviews'); ?></h3>
 	<p>

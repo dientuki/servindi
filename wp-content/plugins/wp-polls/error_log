@@ -1,2 +1,0 @@
-[28-Nov-2010 21:47:23] PHP Fatal error:  Call to undefined function  current_user_can() in /home/servindo/public_html/wp-content/plugins/wp-polls/polls-logs.php on line 21
-[30-Nov-2010 20:16:25] PHP Fatal error:  Call to undefined function  current_user_can() in /home/servindo/public_html/wp-content/plugins/wp-polls/polls-logs.php on line 21

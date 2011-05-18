@@ -5,23 +5,27 @@ Requires at least: 1.5
 Tested up to: 3.0.1
 Stable tag: trunk
 
-Used by 850,000 sites, the ShareThis plugin allows users to share your content through email and 50+ social networks including Facebook and Twitter.
+Used on over 1,000,000 sites, the ShareThis plugin allows users to share your content through email and 50+ social networks including Facebook, Twitter, Digg, StumbleUpon and Google Buzz.
 
 == Description ==
 
-Used by 850,000 sites, the ShareThis plugin allows users to share your content through email and 50+ social networks including Facebook, Twitter, Digg, Stumbleupon and Google Buzz.  
+Increase your audience engagement with our innovative sharing tools!
 
-- New! New Twitter buttons, counters, and large icon styles.
-- New! Registration with ShareThis is now optional for Wordpress users.
-- New! Improved analytics include Social Reach, social engagement and more. 
-- Widget is now 80% lighter.
-- Users can login with Facebook, Twitter, Google or Yahoo! accounts.
-- Users can now search for their favorite services.
-- ShareThis recommends other hot content on your site, after the share.
+Used on over 1,000,000 sites, the ShareThis plugin allows users to share your content through email and 50+ social networks including Facebook, Twitter, Digg, StumbleUpon and Google Buzz.
+
+Now with simultaneous sharing to Facebook, Twitter, Email and more: you can broadcast your message more easily and widely than ever before.
+
+New Features:
+- Users can now share without leaving your website
+- Post to a friend's Facebook wall
+- Custom themes and colors
+- SSL/HTTPS security
+- Lightweight file size: ~20k
+- Plugin will remember your user's preferences
 
 To get more information about the ShareThis plugin for WordPress, visit: http://help.sharethis.com/integration/wordpress
 
-You can customize the ShareThis widget on your site and register with ShareThis (registration is optional) to get access to enhanced share related analytics for your site.
+You can customize the ShareThis widget on your site and register with ShareThis to get access to enhanced share related analytics for your site.
 
 == Installation ==
 
@@ -73,8 +77,6 @@ Some of our prior updates are below, with the promise of many more to come!
 Check out our support area at http://help.sharethis.com and our Wordpress customization area here: http://help.sharethis.com/integration/wordpress
 
 Still got questions? If you need technical help, check out the support info below or email us at support@sharethis.com.
-
-
 
 == Support ==
 

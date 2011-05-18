@@ -1,7 +1,7 @@
 /*
 +----------------------------------------------------------------+
 |																							|
-|	WordPress 2.8 Plugin: WP-Polls 2.60										|
+|	WordPress 2.8 Plugin: WP-Polls 2.61										|
 |	Copyright (c) 2009 Lester "GaMerZ" Chan									|
 |																							|
 |	File Written By:																	|
@@ -22,7 +22,7 @@
 .wp-polls, .wp-polls-form {
 	/* background-color: #ffffff; */
 }
-.wp-polls ul li, wp-polls-ul li, .wp-polls-ans ul li {
+.wp-polls ul li, .wp-polls-ul li, .wp-polls-ans ul li {
 	text-align: left;
 	background-image: none;
 	display: block;
@@ -32,7 +32,7 @@
 	list-style: none;
 	float: none;
 }
-.wp-polls ul li:before, wp-polls-ul li, .wp-polls-ans ul li:before, #sidebar ul ul li:before {
+.wp-polls ul li:before, .wp-polls-ans ul li:before, #sidebar ul ul li:before {
 	content: '';
 }
 .wp-polls IMG, .wp-polls LABEL , .wp-polls INPUT, .wp-polls-loading IMG, .wp-polls-image IMG {

@@ -1,3 +1,0 @@
-[06-Oct-2010 23:46:37] PHP Warning:  require_once(/home/servindo/public_html/wp-settings.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/servindo/public_html/wp-config.php on line 92
-[06-Oct-2010 23:46:37] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '/home/servindo/public_html/wp-settings.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/servindo/public_html/wp-config.php on line 92
-[08-Oct-2010 01:31:54] PHP Parse error:  syntax error, unexpected $end, expecting '(' in /home/servindo/public_html/wp-includes/deprecated.php on line 1197

@@ -1,7 +1,7 @@
 /*
 +----------------------------------------------------------------+
 |																							|
-|	WordPress 2.8 Plugin: WP-Polls 2.60										|
+|	WordPress 2.8 Plugin: WP-Polls 2.61										|
 |	Copyright (c) 2009 Lester "GaMerZ" Chan									|
 |																							|
 |	File Written By:																	|
@@ -16,7 +16,7 @@
 */
 
 
-.wp-polls ul li, wp-polls-ul li, .wp-polls-ans ul li {
+.wp-polls ul li, .wp-polls-ul li, .wp-polls-ans ul li {
 	text-align: right;
 }
 

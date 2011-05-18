@@ -8,6 +8,16 @@ if (!window.console || !console.firebug) {
 
 var startPos=1;
 
+function st_log() {
+	_gaq.push(['_trackEvent', 'WordPressPlugin', 'ConfigOptionsUpdated']);
+	_gaq.push(['_trackEvent', 'WordPressPlugin', "Type_" + $("#st_current_type").val()]);
+	if ($("#get5x").attr("checked")) {
+		_gaq.push(['_trackEvent', 'WordPressPlugin', "Version_5x"]);
+	} else if ($("#get4x").attr("checked")) {
+		_gaq.push(['_trackEvent', 'WordPressPlugin', "Version_4x"]);
+	}
+}
+
 function getStartPos(){
 	var arr=[];
 	arr['_large']=1;
@@ -73,7 +83,7 @@ function makeTags(){
 	if(type=="chicklet2"){
 		dt="";
 	}else if(type=="classic"){
-		tags="<span class='st_sharethis' st_title='{title}' st_url='{url}' displayText='ShareThis'></span>";
+		tags="<span class='st_sharethis' st_title='<?php the_title(); ?>' st_url='<?php the_permalink(); ?>' displayText='ShareThis'></span>";
 		$('#st_tags').val(tags);
 		return true;
 	}
@@ -82,7 +92,7 @@ function makeTags(){
 	}
 	for(var i=0;i<svc.length;i++){
 		if(svc[i].length>2){
-			tags+="<span class='st_"+svc[i]+type+"' st_title='{TITLE}' st_url='{URL}' "+dt+"></span>";
+			tags+="<span class='st_"+svc[i]+type+"' st_title='<?php the_title(); ?>' st_url='<?php the_permalink(); ?>' "+dt+"></span>";
 		}
 	}
 	$('#st_tags').val(tags);
@@ -118,5 +128,10 @@ function carDoneCB(a,elem){
 	}	
 	makeTags();	
 }
+
+$(".versionItem").click(function() {
+	$(".versionItem").removeClass("versionSelect");
+	$(this).addClass("versionSelect");	
+});
 
 

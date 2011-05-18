@@ -1,7 +1,7 @@
 /*
 +----------------------------------------------------------------+
 |																							|
-|	WordPress 2.8 Plugin: WP-Polls 2.60										|
+|	WordPress 2.8 Plugin: WP-Polls 2.61										|
 |	Copyright (c) 2009 Lester "GaMerZ" Chan									|
 |																							|
 |	File Written By:																	|
@@ -34,7 +34,7 @@ function poll_vote(current_poll_id) {
 		if(jQuery('#poll_multiple_ans_' + poll_id).length) {
 			poll_multiple_ans = parseInt(jQuery('#poll_multiple_ans_' + poll_id).val());
 		}
-		jQuery('#polls_form_' + poll_id + ' :checkbox, #polls_form_' + poll_id + ' :radio').each(function(i){
+		jQuery('#polls_form_' + poll_id + ' input:checkbox, #polls_form_' + poll_id + ' input:radio').each(function(i){
 			if (jQuery(this).is(':checked')) {					
 				if(poll_multiple_ans > 0) {
 					poll_answer_id = jQuery(this).val() + ',' + poll_answer_id;

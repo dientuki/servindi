@@ -22,7 +22,7 @@
  Plugin Name: ShareThis
  Plugin URI: http://sharethis.com
  Description: Let your visitors share a post/page with others. Supports e-mail and posting to social bookmarking sites. <a href="options-general.php?page=sharethis.php">Configuration options are here</a>. Questions on configuration, etc.? Make sure to read the README.
- Version: 4.0.4
+ Version: 4.1.0
  Author: ShareThis, Manu Mukerji <manu@sharethis.com>
  Author URI: http://sharethis.com
  */
@@ -35,6 +35,10 @@ function install_ShareThis(){
 	$widget = get_option('st_widget'); //entire script tag
 	$newUser=false;
 
+	if (get_option('st_version') == '') {
+		update_option('st_version', '5x');
+	}
+	
 	if(empty($publisher_id)){
 		if(!empty($widget)){
 			$newPkey=getKeyFromTag();
@@ -52,18 +56,28 @@ function install_ShareThis(){
 	
 	if($widget==false || !preg_match('/stLight.options/',$widget)){
 		$pkey2=get_option('st_pubid'); 
-		$widget="<script charset=\"utf-8\" type=\"text/javascript\" src=\"http://w.sharethis.com/button/buttons.js\"></script>";
+		$widget ="<script charset=\"utf-8\" type=\"text/javascript\">var switchTo5x=true;</script>";
+		$widget.="<script charset=\"utf-8\" type=\"text/javascript\" src=\"http://w.sharethis.com/button/buttons.js\"></script>";
 		$widget.="<script type=\"text/javascript\">stLight.options({publisher:'$pkey2'});var st_type='wordpress".trim(get_bloginfo('version'))."';</script>";
 		update_option('st_widget',$widget);
 	}
 	
 	
 	$st_sent=get_option('st_sent');
+	$st_upgrade_five=get_option('st_upgrade_five');
 	if(empty($st_sent)){
 		update_option('st_sent','true');
+		update_option('st_upgrade_five', '5x');
 		$st_sent=get_option('st_sent'); //confirm if value has been set
 		if(!(empty($st_sent))){
 			sendWelcomeEmail($newUser);
+		}
+		$st_upgrade_five=get_option('st_upgrade_five');
+	} else if (empty($st_upgrade_five)) {
+		update_option('st_upgrade_five', '5x');
+		$st_upgrade_five=get_option('st_upgrade_five'); //confirm if value has been set
+		if(!(empty($st_upgrade_five))){
+			sendUpgradeEmail();
 		}
 	}
 
@@ -157,6 +171,28 @@ function sendWelcomeEmail($newUser){
 		."Get more information on customization options at http://help.sharethis.com/integration/wordpress.\n\n" 		
 		."If you have any additional questions or need help please email us at support@sharethis.com\n\n--The ShareThis Team";
 	}
+	$headers = "From: ShareThis Support <support@sharethis.com>\r\n" ."X-Mailer: php";
+	update_option('st_sent','true');
+	mail($to, $subject, $body, $headers);
+}
+
+function sendUpgradeEmail() {
+	$to=get_option('admin_email');
+	$updatePage=get_option('siteurl');
+	$updatePage.="/wp-admin/options-general.php?page=sharethis.php";
+	
+	$body = "The ShareThis plugin on your website has been updated!\n\n"
+	."If you would like to customize the look of your widget, go to the ShareThis Options page in your WordPress administration area. $updatePage\n\n" 
+	."Get more information on customization options at http://help.sharethis.com/integration/wordpress." 
+	."To get reporting on share data login to your account at http://sharethis.com/account and choose options in the Analytics section\n\n"
+    ."If you have any additional questions or need help please email us at support@sharethis.com\n\n--The ShareThis Team";
+
+	$subject = "ShareThis WordPress Plugin Updated";
+
+	if(empty($to)){
+		return false;
+	}
+	
 	$headers = "From: ShareThis Support <support@sharethis.com>\r\n" ."X-Mailer: php";
 	update_option('st_sent','true');
 	mail($to, $subject, $body, $headers);
@@ -330,6 +366,21 @@ function st_request_handler() {
 						}
 					}
 
+					//update st_version to figure out which widget to use.
+					if(!empty($_POST['st_version'])) {
+						update_option('st_version', $_POST['st_version']);
+						if (($_POST['st_version']) == '5x') {
+							if (strpos($widget, "switchTo5x=true")) {
+							} else if (strpos($widget, "switchTo5x=false")) {
+								$widget = preg_replace("/switchTo5x=false/", "switchTo5x=true", $widget);
+							} else {
+								$widget = "<script charset=\"utf-8\" type=\"text/javascript\">var switchTo5x=true;</script>" . $widget;
+							}
+						} elseif (($_POST['st_version']) == '4x') {
+							$widget = preg_replace("/switchTo5x=true/", "switchTo5x=false", $widget);
+						}
+					}
+							
 					// note: do not convert & to &amp; or append WP version here
 					$widget = st_widget_fix_domain($widget);
 					update_option('st_pubid', $publisher_id);
@@ -378,6 +429,7 @@ function st_options_form() {
 	$services = get_option('st_services');
 	$tags = get_option('st_tags');
 	$st_current_type=get_option('st_current_type');
+	$st_widget_version = get_option('st_version');
 	if(empty($st_current_type)){
 		$st_current_type="_large";
 	}
@@ -386,10 +438,17 @@ function st_options_form() {
 	}
 	if(empty($tags)){
 		foreach(explode(',',$services) as $svc){
-			$tags.="<span class='st_".$svc."_vcount' st_title='{title}' st_url='{url}' displayText='share'></span>";
+			$tags.="<span class='st_".$svc."_vcount' st_title='<?php the_title(); ?>' st_url='<?php the_permalink(); ?>' displayText='share'></span>";
 		}
+		}
+	if(empty($st_widget_version)){
+		$st_widget_version="4x";
 	}
-	
+	$fourCheck = $st_widget_version == "4x" ? 'checked="checked"' : "";
+	$fiveCheck = $st_widget_version == "5x" ? 'checked="checked"' : "";
+	$fourTag = $st_widget_version == "4x" ? 'versionSelect' : "";
+	$fiveTag = $st_widget_version == "5x" ? 'versionSelect' : "";
+	$wImage = $fiveTag == "" ? 'Image_Classic-1.png' : 'Image_Multi_Post-1.png';
 	
 	if(empty($publisher_id)){
 		$toShow="";
@@ -400,6 +459,19 @@ function st_options_form() {
 	print('
 		<script type="text/javascript" src="http://w.sharethis.com/widget/jquery-1.4.2.min.js"></script>
 		<script type="text/javascript" src="http://w.sharethis.com/widget/jquery.carousel.min.js"></script>
+		<script type="text/javascript">
+
+			  var _gaq = _gaq || [];
+			  _gaq.push(["_setAccount", "UA-1645146-1"]);
+			  _gaq.push(["_trackPageview"]);
+			
+			  (function() {
+			    var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+			    ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+			    var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+			  })();
+		</script>
+		
 		<link rel="stylesheet" href="http://w.sharethis.com/widget/wp_ex.css" type="text/css" media="screen" />
 		
 			<div class="wrap">
@@ -423,6 +495,19 @@ function st_options_form() {
 								</ul>
 							</div>
 							<br/>
+							<div class="version">
+								<span class="heading">Choose which version of the widget you would like to use:</span><br /><br />
+								
+								<label>Multi-Post</label>
+								<input type="radio" id="get5x" ' . $fiveCheck . ' name="st_version" value="5x" class="versionItem '.$fiveTag.'" onclick="$(\'.versionImage\').attr(\'src\', \'http://www.sharethis.com/images/Image_Multi_Post-1.png\');"></input>
+								
+								<label>Classic</label>
+								<input type="radio" id="get4x" ' . $fourCheck . '  name="st_version" value="4x" class="versionItem '.$fourTag.'" onclick="$(\'.versionImage\').attr(\'src\', \'http://www.sharethis.com/images/Image_Classic-1.png\');"></input>
+								
+								<br />
+								<img class="versionImage" src="http://www.sharethis.com/images/' . $wImage . '"></img>
+							</div>
+							<br />
 							<div class="services">
 								<span class="heading" onclick="javascript:$(\'#st_services\').toggle(\'slow\');"><span class="headingimg">[+]</span>Click to change order of social buttons or modify list of buttons.</span>&nbsp;(<a href="http://help.sharethis.com/customization/chicklets#supported-services" target="_blank">?</a>)<br/>
 								<textarea name="st_services" id="st_services" style="height: 30px; width: 400px;">'.htmlspecialchars($services).'</textarea>
@@ -488,7 +573,7 @@ function st_options_form() {
 						
 					</fieldset>
 					<p class="submit">
-						<input type="submit" name="submit_button" value="'.__('Update ShareThis Options', 'sharethis').'" />
+						<input type="submit" onclick="st_log();" name="submit_button" value="'.__('Update ShareThis Options', 'sharethis').'" />
 					</p>
 					
 
@@ -505,7 +590,7 @@ function st_menu_items() {
 		add_options_page(
 		__('ShareThis Options', 'sharethis')
 		, __('ShareThis', 'sharethis')
-		, 8
+		, manage_options
 		, basename(__FILE__)
 		, 'st_options_form'
 		);
@@ -523,10 +608,15 @@ function st_makeEntries(){
 		if(preg_match('/buttons.js/',$widget)){
 			if(!empty($tags)){
 				$tags=preg_replace("/\\\'/","'", $tags);
+				$tags=preg_replace("/<\?php the_permalink\(\); \?>/",get_permalink($post->ID), $tags);
+				$tags=preg_replace("/<\?php the_title\(\); \?>/",strip_tags(get_the_title()), $tags);
 				$tags=preg_replace("/{URL}/",get_permalink($post->ID), $tags);
 				$tags=preg_replace("/{TITLE}/",strip_tags(get_the_title()), $tags);
 			}else{
 				$tags="<span class='st_sharethis' st_title='".strip_tags(get_the_title())."' st_url='".get_permalink($post->ID)."' displayText='ShareThis'></span>";
+				$tags="<span class='st_facebook_large' st_title='<?php the_title(); ?>' st_url='<?php the_permalink(); ?>' displayText='share'></span><span class='st_twitter_large' st_title='<?php the_title(); ?>' st_url='<?php the_permalink(); ?>' displayText='share'></span><span class='st_email_large' st_title='<?php the_title(); ?>' st_url='<?php the_permalink(); ?>' displayText='share'></span><span class='st_sharethis_large' st_title='<?php the_title(); ?>' st_url='<?php the_permalink(); ?>' displayText='share'></span>";	
+				$tags=preg_replace("/<\?php the_permalink\(\); \?>/",get_permalink($post->ID), $tags);
+				$tags=preg_replace("/<\?php the_title\(\); \?>/",strip_tags(get_the_title()), $tags);		
 			}
 			$out=$tags;	
 		}else{
