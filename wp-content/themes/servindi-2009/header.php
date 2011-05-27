@@ -42,28 +42,23 @@
 
 <!-- menu -->
 <div class="menu">
-<ul><?php 
-$categorias = get_categories('&hide_empty=0');
-//	echo collapsing_category_menu();
-	foreach($categorias as $cat){
-		if ( $cat->category_parent == "0" ){
-			echo "<li><a href=\"" . get_category_link($cat->cat_ID) . "\" title=\"" . $cat->category_description . "\">" . $cat->cat_name . "<!--[if IE 7]><!--></a><!--<![endif]-->";
-			$padre =  get_categories("child_of=" . $cat->cat_ID);
-			if ( count($padre) > 0 ){
-				echo "<!--[if lte IE 6]> <table> <tr> <td> <![endif]--><ul>";
-				foreach ($padre as $hijo) {
-					echo "<li><a href=\"" . get_category_link($hijo->cat_ID) . "\" title=\"" . $hijo->category_description . "\">" . $hijo->cat_name . "</a></li>";
-				}
-				echo "</ul>";
-			}
-			echo "<!--[if lte IE 6]></td></tr></table></a><![endif]--></li>";
-			
-		} else {
-			
-		}
-	}
-	echo "<li><a href=\"http://www.servindi.org/galeria\">Galeria</a></li>";
- ?></ul>
+	<ul>
+	<?php $categorias = get_categories('&hide_empty=0&parent=0'); foreach($categorias as $cat):?>
+			<li>
+				<a href="<?php echo get_category_link($cat->cat_ID); ?>" title="<?php echo $cat->category_description; ?>"><?php echo $cat->cat_name; ?></a>
+				
+				<?php $padre =  get_categories("child_of=" . $cat->cat_ID); if ( count($padre) > 0 ): ?>
+				<ul>
+					<?php foreach ($padre as $hijo):?>
+					<li><a href="<?php echo get_category_link($hijo->cat_ID); ?>" title="<?php echo $hijo->category_description ?>"><?php echo $hijo->cat_name ?></a></li>
+					<?php endforeach;?>
+				</ul>
+				<?php endif; ?>
+			</li>
+	<?php endforeach;?>
+		<li><a href="<?php bloginfo('url'); ?>/galeria">Galeria</a></li>
+		<li><a href="<?php bloginfo('url'); ?>/enlaces">Enlaces</a></li>
+	</ul>	
 </div>
 <!-- menu end -->
 <div align="center"><div style="background-color: #009B00; color: White; font-size: 13pt; font-weight: bold; width:870px;">Comunicaci&oacute;n intercultural para un mundo m&aacute;s humano y diverso</div></div>
