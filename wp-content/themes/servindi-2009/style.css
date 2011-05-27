@@ -128,8 +128,8 @@ position:relative;
 	position: absolute;
 	left: 0;top: 0;
 	width: auto;
-	height: 21px;
-	line-height:21px;
+	height: 28px;
+	line-height:28px;
 	padding: 0;
 }
 
@@ -137,8 +137,9 @@ position:relative;
 	color: white;
 	font-weight: bold;
 	font-size: 18px;
-	height: 21px;
-	line-height:21px;
+	height: 28px;
+	line-height:28px;
+	display: block;
 }
 
 #cabecera #buscador {
