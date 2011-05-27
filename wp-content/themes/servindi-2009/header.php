@@ -32,16 +32,12 @@
 		</ul>
 	</div>
 
-<!-- header -->
-<div id="header">
-	<?php get_search_form()?>
-	<h1 id="logo-text"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('description'); ?></a></h1>
-	<h2 id="slogan"></h2>
-</div>
-<!-- header End -->
-
 <!-- header photo -->
-<div id="cabecera"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></div>
+<div id="cabecera">
+	<h1 id="logo-text"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('description'); ?></a></h1>
+	<?php get_search_form()?>
+	<a class="logo" href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a>
+</div>
 <!-- header photo end -->
 
 <!-- menu -->

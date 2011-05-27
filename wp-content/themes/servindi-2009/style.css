@@ -106,16 +106,15 @@ ul {
 }
 #cabecera {
 
-	background: #B3CF3E url(images/logo.jpg) no-repeat;
-
+	background: #B3CF3E url(images/logo.jpg) no-repeat center bottom;
+position:relative;
    margin: 1px auto;
    padding: 0px;
-   height: 119px;
+   height: 125px;
    width: 870px;
-   padding-top: 6px;
 }
 
-#cabecera a{
+#cabecera a.logo{
 	outline: none;
 	width: 170px;
 	height: 119px;
@@ -124,6 +123,30 @@ ul {
 	background: none;
 	text-indent: -999em;
 }
+
+#cabecera h1 {
+	position: absolute;
+	left: 0;top: 0;
+	width: auto;
+	height: 21px;
+	line-height:21px;
+	padding: 0;
+}
+
+#cabecera h1 a{
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	height: 21px;
+	line-height:21px;
+}
+
+#cabecera #buscador {
+	position: absolute;
+	right: 0;
+	top: 3px;
+}
+
 /* Navigation */
 #nav {
 	clear: both;	
