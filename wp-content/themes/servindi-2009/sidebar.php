@@ -86,4 +86,19 @@ wp_get_archives($archivo); ?></ul>
 "><img src="http://www.servindi.org/img/DecOnu_chica.jpg" width="200" border="0" /></a>
 		</div>
 	</div>
+	<div>
+		<h2 class="widgettitle"><a href="<?php bloginfo('url'); ?>/seccion/actualidad/articulos-en-ingles">Articulos en Ingles</a></h2>
+		<div class="textwidget">
+			<ul>
+				<?php 	
+					$english = new WP_Query('cat=17&posts_per_page=4'); 
+					while ($english->have_posts()) : $english->the_post(); 
+				?>
+				<li><h4><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h4></li>
+				<?php endwhile; ?>	
+		
+			</ul>
+		</div>	
+	
+	</div>
 </div>
