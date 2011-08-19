@@ -389,3 +389,8 @@ margin-bottom: 3pt;
 }
 
 .widgettitle a {color:#88AC0B;}
+
+.pdfs a{
+	margin-bottom: 5px;
+	display: block;
+}

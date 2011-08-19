@@ -81,9 +81,9 @@ wp_get_archives($archivo); ?></ul>
 		</div>
 	</div>
 	<div>
-		<div class="textwidget" align="center">
-		<a href="http://www.servindi.org/pdf/DDPI_final.pdf
-"><img src="http://www.servindi.org/img/DecOnu_chica.jpg" width="200" border="0" /></a>
+		<div class="textwidget pdfs" align="center">
+		<a href="http://www.servindi.org/pdf/DDPI_final.pdf"><img src="http://www.servindi.org/img/DecOnu_chica.jpg" width="200" height="271" border="0" /></a>
+		<a href="http://servindi.org/pdf/Convenio_169_OIT.pdf"><img src="http://www.servindi.org/img/convenio-169-oit.jpg" width="200" height="268" border="0" /></a>
 		</div>
 	</div>
 	<div>

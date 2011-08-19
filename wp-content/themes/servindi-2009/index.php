@@ -32,7 +32,7 @@
 	<?php if ($paged == 0) : $offset = 10; else: $offset = $paged*10; endif ?>
 	<!--  <?php echo 'paged: ' . $paged. ' offset:' .$offset?> -->
 <?php
-		$my_query = new WP_Query('posts_per_page=20&offset='.$offset); 
+		$my_query = new WP_Query('posts_per_page=25&offset='.$offset); 
 		while ($my_query->have_posts()) : $my_query->the_post(); 
 	?>
 	<h4><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h4>
