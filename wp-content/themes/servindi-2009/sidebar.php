@@ -41,6 +41,24 @@ $autor = get_post_meta($post->ID, 'autor_opinion'); echo " Por " . $autor[0]; ?>
 		<div class="textwidget" align="center"><?php echo stripslashes(get_option("servindi_video")); ?></div>
 	</div>
 	<?php  } ?>
+	
+	<div>
+		<h2 class="widgettitle"><a href="http://servindi.org/seccion/producciones/videos/servindi-tv" style="color: #88AC0B;">Servindi TV</a></h2>
+		<div class="textwidget no-list">
+
+			<?php
+			query_posts("showposts=1&cat=4655&order_by=date&order=DESC");
+			while (have_posts()) : the_post();
+			?>
+				<h4><a href="<?php the_permalink() ?>" title="Enlace permanente a <?php the_title() ?>"><?php the_title() ?></a></h4>
+				<?php 
+					$autor = get_post_meta($post->ID, 'autor_opinion'); 
+					if ($autor[0] != null) {echo " Por " . $autor[0];} ?>
+			<?php endwhile; ?>
+
+		</div>
+	</div>
+		
 	<div>
 		<h2 class="widgettitle">&Uacute;ltimos comentarios</h2>
 		<div class="textwidget"><?php 

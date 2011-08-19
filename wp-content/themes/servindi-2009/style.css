@@ -394,3 +394,7 @@ margin-bottom: 3pt;
 	margin-bottom: 5px;
 	display: block;
 }
+
+.no-list {
+	padding: 5px 40px
+}
